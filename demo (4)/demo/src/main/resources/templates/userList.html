@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Article(CeFPro Connect Section)</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+  <h1 class="mb-4">Add Article(CeFPro Connect Section)</h1>
+  <a href="/users/new" class="btn btn-primary mb-3">Add Article</a>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Preference</th>
+      <th>Status</th>
+      <th>Published on connect</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.title}">Title</td>
+      <td th:text="${user.author}">Author</td>
+      <td th:text="${user.preference}">Preference</td>
+      <td th:text="${user.status}">Status</td>
+      <td th:text="${user.action}">Action</td>
+      <td>
+        <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Edit</a>
+        <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
+
+
